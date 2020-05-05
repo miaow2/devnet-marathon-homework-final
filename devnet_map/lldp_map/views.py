@@ -20,7 +20,7 @@ class DevicesView(View):
     def get(self, request):
         devices = Device.objects.all().order_by('name')
         return render(request, 'devices.html', {
-            'devices': devices,
+            'devices': devices if devices else [],
         })
 
 
