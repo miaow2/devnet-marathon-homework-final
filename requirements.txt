@@ -1,0 +1,7 @@
+Django==2.2
+matplotlib==3.2.1
+networkx==2.4
+nornir==2.4.0
+nornir-scrapli==2020.4.11
+scrapli-ssh2==2020.4.30
+ssh2-python==0.18.0.post1

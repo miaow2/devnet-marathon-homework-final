@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"></head>
+  <body>
+    <div class="container">
+      <h2>Devices</h2>
+      <a href="http://127.0.0.1:8000/admin/lldp_map/device/">Adding, Editing Devices</a><br>
+      <a href="{% url 'lldp_map:topology' %}">Build Topology</a><br>
+      <a href="{% url 'lldp_map:topology_diff' %}">Topology Difference</a>
+      <table style="width:100%">
+        <tr>
+          <th>Name</th>
+          <th>IP Address</th>
+        </tr>
+        {% for device in devices %}
+        <tr>
+          <td>{{ device.name }}</td>
+          <td>{{ device.ip_address }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>

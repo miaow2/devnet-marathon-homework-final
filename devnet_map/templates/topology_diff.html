@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <h2>Topology</h2>
+            <a href="{% url 'lldp_map:devices_list' %}">Back</a>
+            <a href="{% url 'lldp_map:topology_diff' %}">Refresh</a><br>
+            {% if links %}
+                {% if links.exist %}
+                    Соединения без изменений нарисованы черным цветом<br>
+                    {% for link in links.exist %}
+                        {{ link }}<br>
+                    {% endfor %}
+                {% endif %}
+                {% if links.new %}
+                    Новые соединения нарисованы красным цветом<br>
+                    {% for link in links.new %}
+                        {{ link }}<br>
+                    {% endfor %}
+                {% endif %}
+                {% if links.old %}
+                    Удаленные соединения нарисованы красным цветом<br>
+                    {% for link in links.old %}
+                        {{ link }}<br>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+            <img src="{% static "topology-diff.png" %}" alt="Topology Diff">
+        </div>
+    </body>
+</html>
