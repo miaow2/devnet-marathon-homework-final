@@ -11,14 +11,14 @@
 Веб открывается по ссылке http://127.0.0.1:8000/
 
 Девайсы добавляются через админку Django, по умолчанию карта строится только между девайсами, которые есть в базе. 
-Чтобы отображилсь все найденные связи, надо в файле настроек `devnet_map/devnet_map/settings.py` поменять параметр `ALL_CONNECTIONS` на `True`.
+Чтобы отображилсь все найденные связи, надо в файле настроек `devnet_map/devnet_map/settings.py` поменять параметр `ALL_CONNECTIONS` на `True`. После перезапустить веб сервер, обычно при изменении в фалах он рестарует сам, если запущен.
 
 Настройки Nornir находятся в папке `devnet_map/lldp_map/inventory`. При каждом запуске сбора LLDP инвентори генерится из данных БД.
 
 Логин и пароль берется из переменных среды `DEVNET_USERNAME`, `DEVNET_PASSWORD`. Поэтому перед запуском надо их задать.
 
 Информация о топологии в машинном виде лежит в файлах `devnet_map/lldp_map/static/topology.json` и `topology-old.json`. Хранятся только две версии топологии.
-При запуске сбора LLDP информация копируется из `topology.json` в `topology-old.json`. Новая информация записывается в `topology.json`. Это сделано для сравнения версий.
+При запуске сбора LLDP информация копируется из `topology.json` в `topology-old.json`. Новая информация записывается в `topology.json`.
 
 Картинки хранятся в файлах `devnet_map/lldp_map/static/topology.png` и `topology-diff.json`.
 
@@ -87,6 +87,12 @@ sudo python3 manage.py migrate
 Создаем супер пользователя для доступа к админке и созданию записей в БД
 ```
 python3 manage.py createsuperuser
+```
+
+Создаем переменные для доступа к девайсам
+```
+export DEVNET_USERNAME=username
+export DEVNET_PASSWORD=password
 ```
 
 Запускаем сервер
