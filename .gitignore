@@ -1,8 +1,6 @@
 *.sqlite3
 *.pyc
 *.log
-*.json
 *.png
 /__pycache__/
 /.venv/
-devnet_map/lldp_map/migrations/*.py
