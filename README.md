@@ -49,7 +49,49 @@
 
 `Refresh` запускает заново сравнение.
 
+Не изменившиеся линки черного цвета, новые — зеленого, удаленные — карсного.
 
-![Изменения](/images/Topology diff.jpg)
+![Изменения](/images/Topology_diff.jpg?raw=true)
 
 ## Установка
+
+Создадим папку под софт
+```
+cd /opt
+sudo mkdir devnet_map
+cd devnet_map
+```
+
+Клонируем в папку репозиторий
+```
+sudo git clone https://github.com/miaow2/devnet-marathon-homework-final.git .
+```
+
+Создаем виртуальное окружение для питона и активируем его
+```
+sudo python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Устанавливаем необходимые библиотеки
+```
+sudo pip3 install -r requirements.txt
+```
+
+Переходим в папку и создаем базу данных
+```
+cd devnet_map
+sudo python3 manage.py migrate
+```
+
+Создаем супер пользователя для доступа к админке и созданию записей в БД
+```
+python3 manage.py createsuperuser
+```
+
+Запускаем сервер
+```
+sudo python3 manage.py runserver
+```
+
+После этого сервер будет доступен по ссылке http://127.0.0.1:8000/
