@@ -107,8 +107,6 @@ class TopologyView(View):
             # логин/пароль из переменных среды оси
             nr.inventory.defaults.username = os.getenv('DEVNET_USERNAME')
             nr.inventory.defaults.password = os.getenv('DEVNET_PASSWORD')
-            print(nr.inventory.defaults.username)
-            print(nr.inventory.defaults.password)
             # список всех хостов из инвентори
             devices_list = [host.name for host in nr.inventory.hosts.values()]
             # ALL_CONNECTIONS определяет все линки выводить или только между устройствами в БД
