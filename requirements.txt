@@ -1,4 +1,4 @@
-Django==2.2.22
+Django==2.2.24
 matplotlib==3.2.1
 networkx==2.4
 nornir==2.4.0
